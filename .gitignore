@@ -1,0 +1,7 @@
+# Fetched or generated locally; CI clones JUCE itself.
+JUCE/
+build*/
+.venv/
+dist/
+*.log
+.DS_Store

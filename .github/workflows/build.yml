@@ -1,0 +1,44 @@
+# Builds the Windows VST3, runs the DSP and plugin-host tests on it, and uploads a ready-to-share zip.
+# Runs on every push to main and from the Actions tab ("Run workflow").
+name: build
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+env:
+  JUCE_VERSION: 8.0.15
+
+jobs:
+  windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Get JUCE
+        shell: bash
+        run: git clone --depth 1 --branch "$JUCE_VERSION" https://github.com/juce-framework/JUCE.git JUCE
+
+      - name: Configure
+        run: cmake -S . -B build -A x64 -DLM_COPY_PLUGIN=OFF
+
+      - name: Build
+        run: cmake --build build --config Release --parallel
+
+      - name: Test (DSP + VST3 loaded as Tap and Match)
+        run: ctest --test-dir build -C Release --output-on-failure
+
+      - name: Package
+        shell: bash
+        run: |
+          pkg="LUFS Match - FL Studio (Windows)"
+          mkdir -p "dist/$pkg"
+          cp -r "build/LUFSMatch_artefacts/Release/VST3/LUFS Match.vst3" "dist/$pkg/"
+          cp dist-notes/LEEME-Windows.txt "dist/$pkg/LEEME.txt"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: LUFS-Match_FL-Studio_Windows
+          path: dist/
+          if-no-files-found: error

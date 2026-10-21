@@ -1,0 +1,34 @@
+LUFS MATCH - VST3 para FL Studio (Windows)
+=========================================
+
+Qué hace
+--------
+Iguala el volumen de lo que sale de tus efectos con el de lo que entraba, midiendo en LUFS.
+Así comparás tus efectos sin que "más fuerte" te parezca "mejor".
+
+Windows 10/11 de 64 bits. También sirve en cualquier DAW con VST3.
+
+Instalar
+--------
+1. Copiá la carpeta "LUFS Match.vst3" (entera) a:
+      C:\Program Files\Common Files\VST3
+2. En FL Studio: Options > Manage plugins > Find installed plugins.
+
+Usar (se usa de a DOS en la misma pista del mixer)
+--------------------------------------------------
+1. Primer slot de la pista:  LUFS Match  ->  Role: Tap
+2. Tus efectos en los slots del medio.
+3. Último slot de la pista:  LUFS Match  ->  Role: Match
+   Los dos con el MISMO "Link". Para otra pista, usá otro número de Link.
+4. Dale Play.
+   - "Difference" = cuánto bajó o subió el volumen para igualar.
+   - "Pre" y "Post" = volumen antes y después, en LUFS. Post en verde = ya está igualado.
+5. Botón de power (Bypass) = A/B: prendido escuchás tus efectos, apagado el original,
+   los dos al mismo volumen.
+
+Si algo no anda
+---------------
+- "No Tap on link N": falta el Tap al principio, o tienen distinto Link.
+- "Two Taps on link N": usaste el mismo Link en dos pistas.
+- No actives "Make bridged" para estos plugins en FL.
+- El modo Target (lleva la salida a un LUFS fijo) no necesita Tap.

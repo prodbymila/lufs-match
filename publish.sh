@@ -58,7 +58,7 @@ gh run watch "$run" --repo "$login/$REPO" --exit-status --interval 30
 tmp=$(mktemp -d)
 gh run download "$run" --repo "$login/$REPO" --name "$ARTIFACT" --dir "$tmp"
 mkdir -p "$DIST"
-(cd "$tmp" && ditto -c -k --keepParent "LUFS Match - FL Studio (Windows)" "$OLDPWD/$DIST/$ARTIFACT.zip")
+(cd "$tmp" && ditto -c -k --norsrc --noextattr --keepParent "LUFS Match - FL Studio (Windows)" "$OLDPWD/$DIST/$ARTIFACT.zip")
 rm -rf "$tmp"
 echo
 echo "Done: https://github.com/$login/$REPO"

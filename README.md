@@ -1,22 +1,20 @@
-# LUFS Match (VST3 / AU)
+# LUFS Match
 
-Versión plugin del dispositivo Max for Live **LUFS Match**, para FL Studio u otro DAW.
-Iguala la sonoridad de lo que sale de tus efectos con la de lo que entraba (BS.1770 / EBU R128),
-o la lleva a un objetivo en LUFS. Mismo DSP, misma interfaz.
-
-El build lo instala en `/Volumes/X9 Pro/Library/Audio/Plug-Ins/VST3` y `.../Components`
-(universal: Apple Silicon + Intel; la carpeta se cambia con `-DLM_PLUGIN_DIR=...`). Como el resto
-de tus plugins del X9 Pro, se expone a macOS con symlinks en `/Library/Audio/Plug-Ins`:
-
-```bash
-ln -s "/Volumes/X9 Pro/Library/Audio/Plug-Ins/VST3/LUFS Match.vst3" "/Library/Audio/Plug-Ins/VST3/"
-sudo ln -s "/Volumes/X9 Pro/Library/Audio/Plug-Ins/Components/LUFS Match.component" "/Library/Audio/Plug-Ins/Components/"
-```
-
-El AU solo se registra desde `/Library` o `~/Library`, así que sin el segundo link no aparece.
-Con el disco desmontado, ninguno de los dos carga.
+Iguala el volumen de lo que sale de tus efectos con el de lo que entraba, midiendo en LUFS
+(BS.1770 / EBU R128). Así comparás tus efectos sin que "más fuerte" te parezca "mejor".
 
 ![Match](docs/ui-match.png)
+
+## Descargar
+
+| Usás | Descargá |
+|---|---|
+| Ableton Live (Mac o Windows) | [LUFS-Match_Ableton_Mac-Windows.zip](https://github.com/prodbymila/lufs-match/releases/latest/download/LUFS-Match_Ableton_Mac-Windows.zip) |
+| FL Studio en Mac | [LUFS-Match_FL-Studio_Mac.zip](https://github.com/prodbymila/lufs-match/releases/latest/download/LUFS-Match_FL-Studio_Mac.zip) |
+| FL Studio en Windows | [LUFS-Match_FL-Studio_Windows.zip](https://github.com/prodbymila/lufs-match/releases/latest/download/LUFS-Match_FL-Studio_Windows.zip) |
+
+Cada zip trae un `LEEME.txt` con cómo instalarlo y usarlo. El VST3 también funciona en
+cualquier otro DAW con VST3.
 
 ## Por qué son dos instancias
 
